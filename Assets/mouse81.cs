@@ -1,0 +1,241 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System;
+using UnityEngine.UI;
+
+public class mouse81 : MonoBehaviour
+{
+    private List<string[]> rowData = new List<string[]>();
+    public List<string> UV = new List<string>(); //String with values from which to pick
+    private int uvIndex = 0;
+
+
+    void Start()
+    {
+        
+         UV.Add("0");
+          UV.Add("0");
+          UV.Add("0"); 
+          UV.Add("0.125");
+          UV.Add("0"); 
+          UV.Add("0.25");
+          UV.Add("0"); 
+          UV.Add("0.375");
+          UV.Add("0");
+          UV.Add("0.5");
+          UV.Add("0"); 
+          UV.Add("0.625");
+          UV.Add("0");
+          UV.Add("0.75");
+          UV.Add("0"); 
+          UV.Add("0.875");
+          UV.Add("0");
+          UV.Add("1");
+          UV.Add("0.125");
+          UV.Add("0");
+          UV.Add("0.125"); 
+          UV.Add("0.125");
+          UV.Add("0.125"); 
+          UV.Add("0.25");
+          UV.Add("0.125"); 
+          UV.Add("0.375");
+          UV.Add("0.125");
+          UV.Add("0.5");
+          UV.Add("0.125"); 
+          UV.Add("0.625");
+          UV.Add("0.125");
+          UV.Add("0.75");
+          UV.Add("0.125"); 
+          UV.Add("0.875");
+          UV.Add("0.125");
+          UV.Add("1");
+          UV.Add("0.25");
+          UV.Add("0");
+          UV.Add("0.25"); 
+          UV.Add("0.125");
+          UV.Add("0.25"); 
+          UV.Add("0.25");
+          UV.Add("0.25"); 
+          UV.Add("0.375");
+          UV.Add("0.25");
+          UV.Add("0.5");
+          UV.Add("0.25"); 
+          UV.Add("0.625");
+          UV.Add("0.25");
+          UV.Add("0.75");
+          UV.Add("0.25"); 
+          UV.Add("0.875");
+          UV.Add("0.25");
+          UV.Add("1");
+          UV.Add("0.375");
+          UV.Add("0");
+          UV.Add("0.375"); 
+          UV.Add("0.125");
+          UV.Add("0.375"); 
+          UV.Add("0.25");
+          UV.Add("0.375"); 
+          UV.Add("0.375");
+          UV.Add("0.375");
+          UV.Add("0.5");
+          UV.Add("0.375"); 
+          UV.Add("0.625");
+          UV.Add("0.375");
+          UV.Add("0.75");
+          UV.Add("0.375"); 
+          UV.Add("0.875");
+          UV.Add("0.375");
+          UV.Add("1");
+          UV.Add("0.5");
+          UV.Add("0");
+          UV.Add("0.5"); 
+          UV.Add("0.125");
+          UV.Add("0.5"); 
+          UV.Add("0.25");
+          UV.Add("0.5"); 
+          UV.Add("0.375");
+          UV.Add("0.5");
+          UV.Add("0.5");
+          UV.Add("0.5"); 
+          UV.Add("0.625");
+          UV.Add("0.5");
+          UV.Add("0.75");
+          UV.Add("0.5"); 
+          UV.Add("0.875");
+          UV.Add("0.5");
+          UV.Add("1");
+          UV.Add("0.625");
+          UV.Add("0");
+          UV.Add("0.625"); 
+          UV.Add("0.125");
+          UV.Add("0.625"); 
+          UV.Add("0.25");
+          UV.Add("0.625"); 
+          UV.Add("0.375");
+          UV.Add("0.625");
+          UV.Add("0.5");
+          UV.Add("0.625"); 
+          UV.Add("0.625");
+          UV.Add("0.625");
+          UV.Add("0.75");
+          UV.Add("0.625"); 
+          UV.Add("0.875");
+          UV.Add("0.625");
+          UV.Add("1");
+          UV.Add("0.75");
+          UV.Add("0");
+          UV.Add("0.75"); 
+          UV.Add("0.125");
+          UV.Add("0.75"); 
+          UV.Add("0.25");
+          UV.Add("0.75"); 
+          UV.Add("0.375");
+          UV.Add("0.75");
+          UV.Add("0.5");
+          UV.Add("0.75"); 
+          UV.Add("0.625");
+          UV.Add("0.75");
+          UV.Add("0.75");
+          UV.Add("0.75"); 
+          UV.Add("0.875");
+          UV.Add("0.75");
+          UV.Add("1");
+          UV.Add("0.875");
+          UV.Add("0");
+          UV.Add("0.875"); 
+          UV.Add("0.125");
+          UV.Add("0.875"); 
+          UV.Add("0.25");
+          UV.Add("0.875"); 
+          UV.Add("0.375");
+          UV.Add("0.875");
+          UV.Add("0.5");
+          UV.Add("0.875"); 
+          UV.Add("0.625");
+          UV.Add("0.875");
+          UV.Add("0.75");
+          UV.Add("0.875"); 
+          UV.Add("0.875");
+          UV.Add("0.875");
+          UV.Add("1");
+          UV.Add("1");
+          UV.Add("0");
+          UV.Add("1"); 
+          UV.Add("0.125");
+          UV.Add("1"); 
+          UV.Add("0.25");
+          UV.Add("1"); 
+          UV.Add("0.375");
+          UV.Add("1");
+          UV.Add("0.5");
+          UV.Add("1"); 
+          UV.Add("0.625");
+          UV.Add("1");
+          UV.Add("0.75");
+          UV.Add("1"); 
+          UV.Add("0.875");
+          UV.Add("1");
+          UV.Add("1");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire2"))
+          {
+              string[] rowDataTemp = new string[4];
+              rowDataTemp[0] = Input.mousePosition.x.ToString("F4"); // X
+              rowDataTemp[1] = Input.mousePosition.y.ToString("F4"); // Y
+              rowDataTemp[2] = UV[uvIndex];
+              rowDataTemp[3] = UV[uvIndex+1];
+              rowData.Add(rowDataTemp);
+              uvIndex += 2;
+  
+              string[][] output = new string[rowData.Count][];
+  
+              for (int i = 0; i < output.Length; i++)
+              {
+                  output[i] = rowData[i];
+              }
+  
+              int length = output.GetLength(0);
+              string delimiter = ", ";
+  
+              StringBuilder sb = new StringBuilder();
+  
+              for (int index = 0; index < length; index++)
+                  sb.AppendLine(string.Join(delimiter, output[index]));
+  
+              string filePath = getPath();
+  
+              StreamWriter outStream = System.IO.File.CreateText(filePath);
+              outStream.WriteLine(sb);
+              outStream.Close();
+          }
+          if(Input.GetButtonDown("Fire2"))
+		    {
+			Debug.Log(Input.mousePosition.x.ToString("F4") + ", " +Input.mousePosition.y.ToString("F4"));
+		    }
+      }
+
+      
+    
+   
+    
+    // Following method is used to retrive the relative path as device platform
+    public string getPath(){
+#if UNITY_EDITOR
+return Application.dataPath +"/CSV/"+"Saved_data.csv";
+#elif UNITY_ANDROID
+return Application.persistentDataPath+"Saved_data.csv";
+#elif UNITY_IPHONE
+return Application.persistentDataPath+"/"+"Saved_data.csv";
+#else
+return Application.dataPath +"/"+"Saved_data.csv";
+#endif
+}
+}
+    
+
